@@ -1,6 +1,6 @@
 import streamlit as st
+from  joblib import load
 import pickle
-
 from sklearn.preprocessing import LabelEncoder
 
 
@@ -324,8 +324,8 @@ def main():
         # Process the responses and calculate stress score
         stress_score = sum(mcq_responses.values())
         input_features = combined_responses+[stress_score]
-        model_path = r"NB_mood_prediction_model.sav"
-        model = pickle.load(model_path)
+        model_path = r"C:\Users\mupre\Downloads\moody_predictor\NB_mood_prediction_model.sav"
+        model = load(model_path)
         print(input_features)
         stress_level = model.predict([input_features])[0]
         
