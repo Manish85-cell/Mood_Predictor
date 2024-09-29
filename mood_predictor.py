@@ -1,6 +1,6 @@
 import streamlit as st
 import pickle
-from  joblib import load
+
 from sklearn.preprocessing import LabelEncoder
 
 
@@ -325,7 +325,7 @@ def main():
         stress_score = sum(mcq_responses.values())
         input_features = combined_responses+[stress_score]
         model_path = r"NB_mood_prediction_model.sav"
-        model = load(model_path)
+        model = pickle.load(model_path)
         print(input_features)
         stress_level = model.predict([input_features])[0]
         
